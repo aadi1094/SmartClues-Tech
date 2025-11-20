@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+dist/
+.cache/
+.turbo/
+.vercel/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+.DS_Store
+.env*
