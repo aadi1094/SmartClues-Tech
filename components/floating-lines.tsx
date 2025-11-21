@@ -8,7 +8,8 @@ import {
   ShaderMaterial,
   Vector3,
   Vector2,
-  Clock
+  Clock,
+  SRGBColorSpace
 } from 'three';
 
 const vertexShader = `
@@ -64,14 +65,7 @@ mat2 rotate(float r) {
 }
 
 vec3 background_color(vec2 uv) {
-  vec3 col = vec3(255.0);
-
-  float y = sin(uv.x - 0.2) * 0.3 - 0.1;
-  float m = uv.y - y;
-
-  col += mix(BLUE, BLACK, smoothstep(0.0, 1.0, abs(m)));
-  col += mix(PINK, BLACK, smoothstep(0.0, 1.0, abs(m - 0.8)));
-  return col * 0.5;
+  return vec3(1.0);
 }
 
 vec3 getLineColor(float t, vec3 baseColor) {
@@ -96,7 +90,7 @@ vec3 getLineColor(float t, vec3 baseColor) {
     gradientColor = mix(c1, c2, f);
   }
   
-  return gradientColor * 0.5;
+  return mix(vec3(1.0), gradientColor, 0.65);
 }
 
 float wave(vec2 uv, float offset, vec2 screenUv, vec2 mouseUv, bool shouldBend) {
@@ -109,7 +103,7 @@ float wave(vec2 uv, float offset, vec2 screenUv, vec2 mouseUv, bool shouldBend) 
 
   if (shouldBend) {
     vec2 d = screenUv - mouseUv;
-    float influence = exp(-dot(d, d) * bendRadius); // radial falloff around cursor
+    float influence = exp(-dot(d, d) * bendRadius);
     float bendOffset = (mouseUv.y - screenUv.y) * influence * bendStrength * bendInfluence;
     y += bendOffset;
   }
@@ -126,9 +120,8 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     baseUv += parallaxOffset;
   }
 
-  vec3 col = vec3(0.0);
-
-  vec3 b = lineGradientCount > 0 ? vec3(0.0) : background_color(baseUv);
+  vec3 col = vec3(1.0);
+  vec3 b = vec3(1.0);
 
   vec2 mouseUv = vec2(0.0);
   if (interactive) {
@@ -144,13 +137,14 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
       
       float angle = bottomWavePosition.z * log(length(baseUv) + 1.0);
       vec2 ruv = baseUv * rotate(angle);
-      col += lineCol * wave(
+      float intensity = wave(
         ruv + vec2(bottomLineDistance * fi + bottomWavePosition.x, bottomWavePosition.y),
         1.5 + 0.2 * fi,
         baseUv,
         mouseUv,
         interactive
-      ) * 0.2;
+      ) * 0.3;
+      col = mix(col, lineCol, clamp(intensity * 1.1, 0.0, 0.45));
     }
   }
 
@@ -162,13 +156,14 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
       
       float angle = middleWavePosition.z * log(length(baseUv) + 1.0);
       vec2 ruv = baseUv * rotate(angle);
-      col += lineCol * wave(
+      float intensity = wave(
         ruv + vec2(middleLineDistance * fi + middleWavePosition.x, middleWavePosition.y),
         2.0 + 0.15 * fi,
         baseUv,
         mouseUv,
         interactive
-      );
+      ) * 0.25;
+      col = mix(col, lineCol, clamp(intensity * 1.0, 0.0, 0.38));
     }
   }
 
@@ -181,17 +176,18 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
       float angle = topWavePosition.z * log(length(baseUv) + 1.0);
       vec2 ruv = baseUv * rotate(angle);
       ruv.x *= -1.0;
-      col += lineCol * wave(
+      float intensity = wave(
         ruv + vec2(topLineDistance * fi + topWavePosition.x, topWavePosition.y),
         1.0 + 0.2 * fi,
         baseUv,
         mouseUv,
         interactive
-      ) * 0.1;
+      ) * 0.2;
+      col = mix(col, lineCol, clamp(intensity * 0.9, 0.0, 0.3));
     }
   }
 
-  fragColor = vec4(col, 1.0);
+  fragColor = vec4(clamp(col, 0.0, 1.0), 1.0);
 }
 
 void main() {
@@ -266,7 +262,7 @@ export default function FloatingLines({
   mouseDamping = 0.05,
   parallax = true,
   parallaxStrength = 0.2,
-  mixBlendMode = 'screen'
+  mixBlendMode = 'normal'
 }: FloatingLinesProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const targetMouseRef = useRef<Vector2>(new Vector2(-1000, -1000));
@@ -307,6 +303,8 @@ export default function FloatingLines({
     camera.position.z = 1;
 
     const renderer = new WebGLRenderer({ antialias: true, alpha: false });
+    renderer.setClearColor(0xffffff, 1);
+    renderer.outputColorSpace = SRGBColorSpace;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';
@@ -368,9 +366,13 @@ export default function FloatingLines({
       uniforms.lineGradientCount.value = stops.length;
 
       stops.forEach((hex, i) => {
-        const color = hexToVec3(hex);
+        const color = hexToVec3('#16DFFD');
         uniforms.lineGradient.value[i].set(color.x, color.y, color.z);
       });
+    } else {
+      const defaultColor = hexToVec3('#16DFFD');
+      uniforms.lineGradientCount.value = 1;
+      uniforms.lineGradient.value[0].set(defaultColor.x, defaultColor.y, defaultColor.z);
     }
 
     const material = new ShaderMaterial({
@@ -501,5 +503,3 @@ export default function FloatingLines({
     />
   );
 }
-//
-////
