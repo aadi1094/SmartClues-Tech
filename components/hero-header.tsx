@@ -59,12 +59,12 @@ export const HeroHeader = ({ onColorPresetChange }: HeroHeaderProps) => {
                 >
                     <motion.div
                         key={1}
-                        className={cn('relative flex flex-wrap items-center justify-between gap-6 py-3 duration-200 lg:gap-0 lg:py-6', scrolled && 'lg:py-4')}>
+                        className={cn('relative flex flex-wrap items-center justify-between gap-6 py-3 duration-200 lg:gap-0 lg:py-1', scrolled && 'lg:py-4')}>
                         <div className="flex w-full items-center justify-between gap-12 lg:w-auto">
                             <Link href="/" className="flex items-center gap-3 lg:mr-8">
                                 <div className="relative w-16 h-16 lg:w-20 lg:h-20 scale-200">
                                     <Image 
-                                        src="/imagelogo.png"
+                                        src="/imagelogocopy.png"
                                         alt="SmartClues Logo"
                                         fill
                                         className="object-contain "

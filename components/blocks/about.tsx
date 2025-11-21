@@ -36,25 +36,28 @@ export function AboutSection() {
 
   const team = [
     {
-      name: "Ava Patel",
-      role: "Head of Product Design",
-      image: heroImage,
+      name: "Anvesh Reddy Inaganti",
+      role: "Chief Executive Officer",
+      image: "/Anvesh.jpeg",
     },
     {
-      name: "Leo Martinez",
-      role: "Lead Frontend Engineer",
-      image: communityImages[0],
-    },
-    {
-      name: "Sofia Nguyen",
-      role: "Automation Architect",
+      name: "Naveen Naga Sai Pabbathi",
+      role: "Chief Operating Officer",
       image: communityImages[1],
     },
     {
-      name: "Ethan Brooks",
-      role: "Developer Relations",
+      name: "Ashok Naga Sai Pabbathi",
+      role: "Executive Director",
+      image: communityImages[0],
+    },
+    {
+      name: "Deepak Chopra",
+      role: "Vice President Business Development",
       image: communityImages[2],
     },
+    
+    
+    
   ]
 
   return (
@@ -84,10 +87,10 @@ export function AboutSection() {
               Our Story
             </h2>
             <p className="md:text-xl/relaxed" style={{ color: THEME.textSecondary }}>
-              Founded in 2015, our design studio has grown from a small team of passionate designers to a full-service creative agency. We believe in the power of design to transform businesses and create meaningful connections with audiences.
+              <span className="font-bold">Smartclues</span> Technologies LLP is a multi-disciplinary, innovation-led technology and healthcare services company specializing in secure IT solutions and end-to-end U.S. Healthcare Revenue Cycle Management (RCM).
             </p>
             <p className="md:text-xl/relaxed" style={{ color: THEME.textSecondary }}>
-              Our approach combines strategic thinking, creative excellence, and technical expertise to deliver solutions that not only look beautiful but also drive results.
+              Headquartered in Hyderabad with a growing global footprint, we combine cyber security expertise with deep healthcare domain knowledge to deliver measurable business outcomes.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button
@@ -123,6 +126,13 @@ export function AboutSection() {
           >
             <div className="relative h-[350px] w-full md:h-[450px] lg:h-[500px] overflow-hidden rounded-3xl">
               <Image src={heroImage} alt="PrebuiltUI showcase" fill className="object-cover" />
+              {/* Always visible shade */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%)`,
+                }}
+              />
               <div
                 className="absolute bottom-6 left-6 right-6 flex flex-col gap-3 rounded-2xl p-4 text-sm shadow-lg backdrop-blur"
                 style={{
@@ -183,13 +193,13 @@ export function AboutSection() {
               >
                 <Image src={member.image} alt={member.name} width={300} height={400} className="h-[300px] w-full object-cover transition-transform duration-300 group-hover:scale-105" />
                 <div
-                  className="absolute inset-0 flex flex-col justify-end p-4 text-white"
+                  className="absolute bottom-0 left-0 right-0 p-4"
                   style={{
-                    background: `linear-gradient(180deg, ${toRgba(THEME.secondary, 0)} 0%, ${toRgba(THEME.secondary, 0.85)} 100%)`,
+                    background: `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%)`,
                   }}
                 >
-                  <h4 className="font-bold">{member.name}</h4>
-                  <p className="text-sm">{member.role}</p>
+                  <h4 className="font-bold text-white">{member.name}</h4>
+                  <p className="text-sm text-gray-200">{member.role}</p>
                 </div>
               </motion.div>
             ))}

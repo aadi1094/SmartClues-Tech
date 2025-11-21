@@ -10,6 +10,16 @@ import {
   IconRouteAltLeft,
   IconTerminal2,
 } from "@tabler/icons-react";
+import {
+  LineChart,
+  Code,
+  Globe,
+  Database,
+  Cpu,
+  Shield,
+  Cloud,
+  Smartphone,
+} from "lucide-react";
 
 const THEME = {
   primary: "rgb(0, 223, 255)",
@@ -40,49 +50,52 @@ const toRgba = (color: string, alpha: number) => {
 export function FeaturesSectionWithHoverEffects() {
   const features = [
     {
-      title: "Built for developers",
+      title: "Revenue Cycle Management",
       description:
-        "Built for engineers, developers, dreamers, thinkers and doers.",
-      icon: <IconTerminal2 />,
+        "Specialized in medical coding with 99.9% quality and 100% production.",
+      icon: <LineChart />,
     },
     {
-      title: "Ease of use",
+      title: "Product Development",
       description:
-        "It's as easy as using an Apple, and as expensive as buying one.",
-      icon: <IconEaseInOut />,
+        "Custom-built solutions tailored to your business needs with AI-driven automation.",
+      icon: <Code />,
     },
     {
-      title: "Pricing like no other",
+      title: "Web Development",
       description:
-        "Our prices are best in the market. No cap, no lock, no credit card required.",
-      icon: <IconCurrencyDollar />,
+        "Modern, responsive web applications built with cutting-edge technologies.",
+      icon: <Globe />,
     },
     {
-      title: "100% Uptime guarantee",
-      description: "We just cannot be taken down by anyone.",
-      icon: <IconCloud />,
-    },
-    {
-      title: "Multi-tenant Architecture",
-      description: "You can simply share passwords instead of buying new seats",
-      icon: <IconRouteAltLeft />,
-    },
-    {
-      title: "24/7 Customer Support",
+      title: "Database Management",
       description:
-        "We are available a 100% of the time. Atleast our AI Agents are.",
-      icon: <IconHelp />,
+        "Efficient database solutions for optimal data storage and retrieval.",
+      icon: <Database />,
     },
     {
-      title: "Money back guarantee",
+      title: "Blockchain Services",
       description:
-        "If you donot like EveryAI, we will convince you to like us.",
-      icon: <IconAdjustmentsBolt />,
+        "Innovative blockchain solutions for secure and transparent transactions.",
+      icon: <Cpu />,
     },
     {
-      title: "And everything else",
-      description: "I just ran out of copy ideas. Accept my sincere apologies",
-      icon: <IconHeart />,
+      title: "Testing & Security",
+      description:
+        "Comprehensive testing and security solutions to protect your digital assets.",
+      icon: <Shield />,
+    },
+    {
+      title: "Cloud Solutions",
+      description:
+        "Scalable cloud infrastructure and migration services for modern businesses.",
+      icon: <Cloud />,
+    },
+    {
+      title: "Mobile App Development",
+      description:
+        "Native and cross-platform mobile applications for iOS and Android platforms.",
+      icon: <Smartphone />,
     },
   ];
   return (

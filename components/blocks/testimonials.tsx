@@ -31,23 +31,23 @@ const toRgba = (color: string, alpha: number) => {
 
 const testimonials = [
   {
-    quote: "Working with this team transformed our brand. They understood our vision perfectly and delivered beyond our expectations.",
-    author: "Sarah Johnson",
+    quote: "Smartclues Technologies has been instrumental in optimizing our medical coding processes. Their attention to detail and commitment to quality is exceptional.",
+    author: "Geetha Lakshmi",
     company: "CEO, TechStart",
   },
   {
-    quote: "The attention to detail and creative solutions provided by the team helped us increase our conversion rate by 40%.",
-    author: "Michael Chen",
+    quote: "The team at Smartclues delivered our project on time and with exceptional quality. Their expertise in medical coding has significantly improved our operational efficiency.",
+    author: "Chocko Valliappa",
     company: "Marketing Director, GrowthCo",
   },
   {
-    quote: "Their strategic approach to design not only improved our user experience but also strengthened our brand identity.",
-    author: "Emma Rodriguez",
+    quote: "Working with Smartclues has been a game-changer for our digital forensics needs. Their technical knowledge and problem-solving abilities are outstanding.",
+    author: "Abhishek kumar",
     company: "Product Manager, InnovateLabs",
   },
   {
-    quote: "From concept to execution, the team demonstrated exceptional skill and professionalism. Highly recommended!",
-    author: "David Kim",
+    quote: "The GST system implemented by Smartclues has streamlined our compliance processes and saved us countless hours of manual work. Highly recommended!",
+    author: "Prashant Patil",
     company: "Founder, NextWave",
   },
 ]
@@ -147,7 +147,7 @@ export function TestimonialsSection() {
                     {testimonial.author}
                   </p>
                   <p className="text-sm" style={{ color: THEME.textSecondary }}>
-                    {testimonial.company}
+                    {/* {testimonial.company} */}
                   </p>
                 </div>
               </div>

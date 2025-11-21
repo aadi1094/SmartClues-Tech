@@ -64,11 +64,6 @@ const galleryData = [
     href: "/case-studies/gst-system",
     image:
       "https://images.unsplash.com/photo-1454165205744-3b78555e5572?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    stats: [
-      { label: "Compliance", value: "100%" },
-      { label: "Processing Time", value: "-60%" },
-      { label: "Error Reduction", value: "95%" },
-    ],
   },
   {
     id: "ai-operations",
@@ -78,10 +73,6 @@ const galleryData = [
     href: "/case-studies/ai-ops",
     image:
       "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    stats: [
-      { label: "Downtime", value: "-45%" },
-      { label: "Alerts Accuracy", value: "92%" },
-    ],
   },
 ];
 
@@ -146,16 +137,31 @@ export function FeaturedProjectsSection() {
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
+            {/* Always visible shade */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `linear-gradient(180deg, ${toRgba(THEME.secondary, 0)} 0%, ${toRgba(THEME.secondary, 0.7)} 100%)`,
+              }}
+            />
+            {/* Faint gradient overlay on hover */}
+            <div
+              className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute inset-0 h-full w-full pointer-events-none"
+              style={{
+                background: `linear-gradient(to top, ${toRgba(THEME.gradientStart, 0.18)}, transparent)`,
+              }}
+            />
+            {/* Additional shade on hover */}
             <div
               className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"
               style={{
-                background: `linear-gradient(180deg, ${toRgba(THEME.secondary, 0)} 0%, ${toRgba(THEME.secondary, 0.9)} 100%)`,
+                background: `linear-gradient(180deg, ${toRgba(THEME.secondary, 0)} 0%, ${toRgba(THEME.secondary, 0.2)} 100%)`,
               }}
             />
-            <div className="absolute inset-0 flex flex-col justify-end p-6 text-white opacity-0 transition-opacity group-hover:opacity-100">
+            <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
               <h3 className="text-xl font-bold">{primary.title}</h3>
               <p className="text-sm">{primary.description}</p>
-              {primary.stats && (
+              {/* {primary.stats && (
                 <div className="mt-4 flex flex-wrap gap-3 text-sm">
                   {primary.stats.map((stat) => (
                     <div
@@ -168,7 +174,7 @@ export function FeaturedProjectsSection() {
                     </div>
                   ))}
                 </div>
-              )}
+              )} */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -192,7 +198,7 @@ export function FeaturedProjectsSection() {
           </motion.a>
 
           {/* Secondary features */}
-          {secondary.map((item) => (
+          {secondary.map((item, index) => (
             <motion.a
               key={item.id}
               href={item.href}
@@ -207,16 +213,31 @@ export function FeaturedProjectsSection() {
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
+              {/* Always visible shade */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: `linear-gradient(180deg, ${toRgba(THEME.secondary, 0)} 0%, ${toRgba(THEME.secondary, 0.65)} 100%)`,
+                }}
+              />
+              {/* Faint gradient overlay on hover */}
+              <div
+                className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute inset-0 h-full w-full pointer-events-none"
+                style={{
+                  background: `linear-gradient(to bottom, ${toRgba(THEME.gradientStart, 0.18)}, transparent)`,
+                }}
+              />
+              {/* Additional shade on hover */}
               <div
                 className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"
                 style={{
-                  background: `linear-gradient(180deg, ${toRgba(THEME.secondary, 0)} 0%, ${toRgba(THEME.secondary, 0.85)} 100%)`,
+                  background: `linear-gradient(180deg, ${toRgba(THEME.secondary, 0)} 0%, ${toRgba(THEME.secondary, 0.2)} 100%)`,
                 }}
               />
-              <div className="absolute inset-0 flex flex-col justify-end p-6 text-white opacity-0 transition-opacity group-hover:opacity-100">
+              <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
                 <h3 className="text-xl font-bold">{item.title}</h3>
                 <p className="text-sm">{item.description}</p>
-                {item.stats && (
+                {/* {item.stats && (
                   <div className="mt-3 flex flex-wrap gap-2 text-xs">
                     {item.stats.map((stat) => (
                       <div
@@ -229,7 +250,7 @@ export function FeaturedProjectsSection() {
                       </div>
                     ))}
                   </div>
-                )}
+                )} */}
               </div>
             </motion.a>
           ))}
