@@ -68,7 +68,7 @@ export function AboutSection() {
         "Civil engineer and entrepreneur blending innovation with disciplined execution. Drives strategic growth, operational clarity, and long-term structure for Smartclues.",
     },
     {
-    name: "Partha Sarathi",
+    name: "Dr Ravuru Parthasarathi Rao",
     role: "Vice President – Revenue Management Strategist (Overseas)",
     image: "/Partha.png",
     bio:

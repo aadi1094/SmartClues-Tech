@@ -73,7 +73,7 @@ const teamMembers = [
       "With an MBA in Finance and a strong operations background, I ensure Smartclues runs with efficiency, discipline, and financial clarity.",
   },
   {
-    name: "Partha Rao",
+    name: "Dr Ravuru Parthasarathi Rao",
     role: "Vice President – Revenue Management Strategist (Overseas)",
     image: "/Partha.png",
     bio:
