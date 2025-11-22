@@ -41,12 +41,7 @@ const contactItems = [
   { icon: Clock, title: "Working Hours", value: "Monday - Friday: 9:00 AM - 6:00 PM" },
 ]
 
-const socials = [
-  { icon: <Instagram className="h-5 w-5" />, label: "Instagram" },
-  { icon: <Twitter className="h-5 w-5" />, label: "Twitter" },
-  { icon: <Linkedin className="h-5 w-5" />, label: "LinkedIn" },
-  { icon: <Facebook className="h-5 w-5" />, label: "Facebook" },
-]
+
 
 export function ContactsSection() {
   return (
@@ -95,24 +90,7 @@ export function ContactsSection() {
               </motion.div>
             ))}
           </div>
-          <div className="mt-8 flex space-x-3">
-            {socials.map((social) => (
-              <motion.div key={social.label} whileHover={{ y: -5, scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                <Link
-                  href="#"
-                  className="rounded-3xl border p-2 transition-colors"
-                  style={{
-                    borderColor: toRgba(THEME.secondary, 0.2),
-                    color: THEME.textSecondary,
-                    backgroundColor: THEME.backgroundLight,
-                  }}
-                >
-                  {social.icon}
-                  <span className="sr-only">{social.label}</span>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+          
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: 50 }}

@@ -68,12 +68,12 @@ export function AboutSection() {
         "Civil engineer and entrepreneur blending innovation with disciplined execution. Drives strategic growth, operational clarity, and long-term structure for Smartclues.",
     },
     {
-      name: "Balaji Meda",
-      role: "Operations Manager",
-      image: "/Balaji.png",
-      bio:
-        "With an MBA in Finance and a strong operations background, I ensure Smartclues runs with efficiency, discipline, and financial clarity. I focus on strengthening internal workflows, supporting strategic initiatives, and enhancing overall organizational performance.",
-    },
+    name: "Partha Sarathi",
+    role: "Vice President – Revenue Management Strategist (Overseas)",
+    image: "/Partha.png",
+    bio:
+      "My expertise lies in U.S. Healthcare RCM and global operational strategy. At Smartclues, I focus on optimizing revenue cycles, improving financial outcomes, and leading high-performing teams across international markets.",
+  },
   ]
 
   const [activeMember, setActiveMember] = useState<TeamMember | null>(null)

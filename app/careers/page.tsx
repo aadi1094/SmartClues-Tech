@@ -505,10 +505,6 @@ export default function CareersPage() {
                         </div>
                         <div className="flex items-center justify-between gap-4 text-sm font-semibold text-slate-700 sm:justify-end">
                           <span className="inline-flex items-center gap-1">
-                            <DollarSign
-                              className="h-4 w-4"
-                              style={{ color: THEME.secondary }}
-                            />
                             {job.salary}
                           </span>
                           {expandedJob === job.id ? (

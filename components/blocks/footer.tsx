@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Instagram, Twitter, Linkedin, Github } from "lucide-react"
+import { IconBrandInstagram, IconBrandTwitter, IconBrandLinkedin, IconBrandGithub } from "@tabler/icons-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -61,6 +61,13 @@ const legalLinks = [
   { label: "Cookie Policy", href: "/cookie-policy" },
 ]
 
+const socialLinks = [
+  { label: "Instagram", href: "#", icon: IconBrandInstagram },
+  { label: "Twitter", href: "#", icon: IconBrandTwitter },
+  { label: "LinkedIn", href: "#", icon: IconBrandLinkedin },
+  { label: "GitHub", href: "#", icon: IconBrandGithub },
+]
+
 export function FooterSection() {
   return (
     <footer
@@ -96,20 +103,18 @@ export function FooterSection() {
               powered by AI and automation, enhancing business efficiency and
               security since 2019.
           </p>
-          <div className="flex space-x-3">
-            {[Instagram, Twitter, Linkedin, Github].map((Icon) => (
-              <motion.div key={Icon.name} whileHover={{ y: -5, scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+          <div className="flex space-x-4">
+            {socialLinks.map(({ label, href, icon: Icon }) => (
+              <motion.div key={label} whileHover={{ y: -5, scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                 <Link
-                  href="#"
-                  className="rounded-full border p-2 transition-colors"
+                  href={href}
+                  className="transition-colors hover:opacity-70"
                   style={{
-                    borderColor: toRgba(THEME.secondary, 0.2),
                     color: THEME.textSecondary,
-                    backgroundColor: THEME.backgroundLight,
                   }}
                 >
-                  <Icon className="h-5 w-5" />
-                  <span className="sr-only">{Icon.name}</span>
+                  <Icon className="h-6 w-6" />
+                  <span className="sr-only">{label}</span>
                 </Link>
               </motion.div>
             ))}

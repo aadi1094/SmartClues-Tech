@@ -4,9 +4,6 @@ import HeroSection from "@/components/hero-section";
 import { HeroHeader } from "@/components/hero-header";
 import { FeaturesSectionWithHoverEffects } from "@/components/blocks/services";
 import { useState } from "react";
-import About from "@/components/about-section";
-import { Gallery4 } from "@/components/blocks/gallery4";
-import { DesignAgency } from "@/components/blocks/landing-page";
 import { FeaturedProjectsSection } from "@/components/blocks/featured-projects";
 import { AboutSection } from "@/components/blocks/about";
 import { TestimonialsSection } from "@/components/blocks/testimonials";
@@ -24,11 +21,9 @@ export default function Home() {
       <div className="relative z-10">
         <HeroSection linesGradient={colorPreset} />
         <div className="mt-24 flex flex-col gap-32 lg:gap-24">
-          <FeaturesSectionWithHoverEffects />
-          {/* <About  />
-          <Gallery4 /> */}
-          
           <AboutSection />
+          <FeaturesSectionWithHoverEffects />
+          
           <FeaturedProjectsSection />
           <TestimonialsSection />
           <ContactsSection />
