@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { MapPin, Mail, Phone, Instagram, Twitter, Linkedin, Facebook } from "lucide-react"
+import { MapPin, Mail, Phone, Instagram, Twitter, Linkedin, Facebook, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -35,9 +35,10 @@ const toRgba = (color: string, alpha: number) => {
 
 const fadeIn = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }
 const contactItems = [
-  { icon: MapPin, title: "Our Location", value: "123 Design Street, Creative City, 10001" },
-  { icon: Mail, title: "Email Us", value: "hello@designstudio.com" },
-  { icon: Phone, title: "Call Us", value: "+1 (555) 123-4567" },
+  { icon: MapPin, title: "Our Location", value: "Smartclues Technologies LLP, Hyderabad, India" },
+  { icon: Phone, title: "Phone Number", value: "+91 8977752573" },
+  { icon: Mail, title: "Email Address", value: "info@smartcluestech.com" },
+  { icon: Clock, title: "Working Hours", value: "Monday - Friday: 9:00 AM - 6:00 PM" },
 ]
 
 const socials = [

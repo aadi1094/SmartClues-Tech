@@ -16,6 +16,7 @@ const THEME = {
   backgroundSection: "#F2F4F7",
   textPrimary: "#0F172A",
   textSecondary: "#475569",
+  overlayDark: "rgb(15, 23, 42)",
 } as const
 
 const toRgba = (color: string, alpha: number) => {
@@ -141,21 +142,21 @@ export function FeaturedProjectsSection() {
             <div
               className="absolute inset-0"
               style={{
-                background: `linear-gradient(180deg, ${toRgba(THEME.secondary, 0)} 0%, ${toRgba(THEME.secondary, 0.7)} 100%)`,
+                background: `linear-gradient(180deg, ${toRgba(THEME.overlayDark, 0)} 0%, ${toRgba(THEME.overlayDark, 0.85)} 100%)`,
               }}
             />
             {/* Faint gradient overlay on hover */}
             <div
               className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute inset-0 h-full w-full pointer-events-none"
               style={{
-                background: `linear-gradient(to top, ${toRgba(THEME.gradientStart, 0.18)}, transparent)`,
+                background: `linear-gradient(to top, ${toRgba(THEME.overlayDark, 0.3)}, transparent)`,
               }}
             />
             {/* Additional shade on hover */}
             <div
               className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"
               style={{
-                background: `linear-gradient(180deg, ${toRgba(THEME.secondary, 0)} 0%, ${toRgba(THEME.secondary, 0.2)} 100%)`,
+                background: `linear-gradient(180deg, ${toRgba(THEME.overlayDark, 0)} 0%, ${toRgba(THEME.overlayDark, 0.25)} 100%)`,
               }}
             />
             <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
@@ -217,21 +218,21 @@ export function FeaturedProjectsSection() {
               <div
                 className="absolute inset-0"
                 style={{
-                  background: `linear-gradient(180deg, ${toRgba(THEME.secondary, 0)} 0%, ${toRgba(THEME.secondary, 0.65)} 100%)`,
+                  background: `linear-gradient(180deg, ${toRgba(THEME.overlayDark, 0)} 0%, ${toRgba(THEME.overlayDark, 0.8)} 100%)`,
                 }}
               />
               {/* Faint gradient overlay on hover */}
               <div
                 className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute inset-0 h-full w-full pointer-events-none"
                 style={{
-                  background: `linear-gradient(to bottom, ${toRgba(THEME.gradientStart, 0.18)}, transparent)`,
+                  background: `linear-gradient(to bottom, ${toRgba(THEME.overlayDark, 0.28)}, transparent)`,
                 }}
               />
               {/* Additional shade on hover */}
               <div
                 className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"
                 style={{
-                  background: `linear-gradient(180deg, ${toRgba(THEME.secondary, 0)} 0%, ${toRgba(THEME.secondary, 0.2)} 100%)`,
+                  background: `linear-gradient(180deg, ${toRgba(THEME.overlayDark, 0)} 0%, ${toRgba(THEME.overlayDark, 0.22)} 100%)`,
                 }}
               />
               <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
@@ -264,15 +265,18 @@ export function FeaturedProjectsSection() {
                 backgroundImage: `linear-gradient(135deg, ${THEME.gradientStart}, ${THEME.gradientEnd})`,
                 color: THEME.textPrimary,
               }}
+              asChild
             >
-              View All Projects
-              <motion.span
-                initial={{ x: 0 }}
-                whileHover={{ x: 5 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </motion.span>
+              <Link href="/services" className="flex items-center">
+                View All Projects
+                <motion.span
+                  initial={{ x: 0 }}
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </motion.span>
+              </Link>
             </Button>
           </motion.div>
         </div>

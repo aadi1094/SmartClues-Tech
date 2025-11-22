@@ -21,7 +21,7 @@ import {
   Smartphone,
 } from "lucide-react";
 
-const THEME = {
+export const THEME = {
   primary: "rgb(0, 223, 255)",
   primaryHover: "rgb(0, 249, 255)",
   secondary: "rgb(0, 86, 209)",
@@ -121,7 +121,7 @@ export function FeaturesSectionWithHoverEffects() {
       </div>
 
       {/* Features Grid */}
-      <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-6 md:grid md:grid-cols-2 md:gap-0 md:overflow-visible md:px-0 md:snap-none lg:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {features.map((feature, index) => (
           <Feature
             key={feature.title}
@@ -165,7 +165,7 @@ const Feature = ({
       }}
       className={cn(
         "relative flex flex-col py-10 group/feature transition-all duration-300",
-        "min-w-[82vw] snap-center flex-shrink-0 px-6 scroll-m-4 overflow-hidden rounded-2xl border border-neutral-200/60 bg-white/80 shadow-sm backdrop-blur dark:border-neutral-700/60 dark:bg-neutral-900/50 md:min-w-0 md:snap-start md:rounded-none md:border-0 md:bg-transparent md:px-0 md:shadow-none",
+        "w-full rounded-2xl border border-neutral-200/60 bg-white/80 px-6 shadow-sm backdrop-blur dark:border-neutral-700/60 dark:bg-neutral-900/50 md:border-0 md:bg-transparent md:px-0 md:shadow-none",
         "lg:border-r dark:border-neutral-800",
         (index === 0 || index === 4) && "lg:border-l dark:border-neutral-800",
         index < 4 && "lg:border-b dark:border-neutral-800"

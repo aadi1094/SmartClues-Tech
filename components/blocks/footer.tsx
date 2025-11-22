@@ -35,6 +35,32 @@ const toRgba = (color: string, alpha: number) => {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`
 }
 
+const companyLinks = [
+  { label: "About Us", href: "/about" },
+  { label: "Careers", href: "/careers" },
+  { label: "Contact Us", href: "/contact" },
+]
+
+const serviceLinks = [
+  { label: "IT Services", href: "/services" },
+  { label: "Web Development", href: "/services" },
+  { label: "Healthcare Solutions", href: "/services" },
+  { label: "Security Solutions", href: "/services" },
+]
+
+const resourceLinks = [
+  { label: "Blog", href: "/blog" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Guides & Tutorials", href: "/guides-and-tutorials" },
+  { label: "FAQ", href: "/faq" },
+]
+
+const legalLinks = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms of Service", href: "/terms" },
+  { label: "Cookie Policy", href: "/cookie-policy" },
+]
+
 export function FooterSection() {
   return (
     <footer
@@ -95,9 +121,9 @@ export function FooterSection() {
               Company
             </h3>
             <nav className="mt-4 flex flex-col space-y-2 text-sm">
-              {["About Us", "Careers", "Our Process", "News & Press"].map((item) => (
-                <Link key={item} href="#" className="text-muted-foreground hover:text-foreground">
-                  {item}
+              {companyLinks.map(({ label, href }) => (
+                <Link key={label} href={href} className="text-muted-foreground hover:text-foreground">
+                  {label}
                 </Link>
               ))}
             </nav>
@@ -107,9 +133,9 @@ export function FooterSection() {
               Services
             </h3>
             <nav className="mt-4 flex flex-col space-y-2 text-sm">
-              {["UI/UX Design", "Web Development", "Brand Identity", "Digital Marketing"].map((item) => (
-                <Link key={item} href="#" className="text-muted-foreground hover:text-foreground">
-                  {item}
+              {serviceLinks.map(({ label, href }) => (
+                <Link key={label} href={href} className="text-muted-foreground hover:text-foreground">
+                  {label}
                 </Link>
               ))}
             </nav>
@@ -121,9 +147,9 @@ export function FooterSection() {
               Resources
             </h3>
             <nav className="mt-4 flex flex-col space-y-2 text-sm">
-              {["Blog", "Case Studies", "Guides & Tutorials", "FAQ"].map((item) => (
-                <Link key={item} href="#" className="text-muted-foreground hover:text-foreground">
-                  {item}
+              {resourceLinks.map(({ label, href }) => (
+                <Link key={label} href={href} className="text-muted-foreground hover:text-foreground">
+                  {label}
                 </Link>
               ))}
             </nav>
@@ -133,9 +159,9 @@ export function FooterSection() {
               Legal
             </h3>
             <nav className="mt-4 flex flex-col space-y-2 text-sm">
-              {["Privacy Policy", "Terms of Service", "Cookie Policy"].map((item) => (
-                <Link key={item} href="#" className="text-muted-foreground hover:text-foreground">
-                  {item}
+              {legalLinks.map(({ label, href }) => (
+                <Link key={label} href={href} className="text-muted-foreground hover:text-foreground">
+                  {label}
                 </Link>
               ))}
             </nav>
@@ -178,7 +204,7 @@ export function FooterSection() {
             &copy; {new Date().getFullYear()} Smartclues Technologies LLP. All rights reserved.
           </p>
           <p className="text-xs" style={{ color: THEME.textSecondary }}>
-            Developed by Vx Software Solutions
+            Developed by Smartclues Technologies LLP
           </p>
         </div>
       </div>

@@ -1,8 +1,11 @@
 "use client"
 
 import Image from "next/image"
-import { motion } from "framer-motion"
+import Link from "next/link"
+import { motion, AnimatePresence } from "framer-motion"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
+import { ArrowUpRight, X } from "lucide-react"
 
 const THEME = {
   primary: "rgb(0, 223, 255)",
@@ -14,6 +17,7 @@ const THEME = {
   backgroundSection: "#F2F4F7",
   textPrimary: "#0F172A",
   textSecondary: "#475569",
+  overlayDark: "rgb(15, 23, 42)",
 } as const
 
 const toRgba = (color: string, alpha: number) => {
@@ -26,6 +30,13 @@ const fadeIn = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, tra
 const staggerContainer = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }
 const itemFadeIn = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }
 
+type TeamMember = {
+  name: string
+  role: string
+  image: string
+  bio: string
+}
+
 export function AboutSection() {
   const heroImage = "https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?q=80&w=451&h=451&auto=format&fit=crop"
   const communityImages = [
@@ -34,31 +45,38 @@ export function AboutSection() {
     "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&h=200&auto=format&fit=crop",
   ]
 
-  const team = [
+  const team: TeamMember[] = [
     {
-      name: "Anvesh Reddy Inaganti",
-      role: "Chief Executive Officer",
-      image: "/Anvesh.jpeg",
+      name: "Ashok Naga Sai Pabbathi",
+      role: "Founder & CEO",
+      image: "/Ashok.png",
+      bio:
+        "Certified Ethical Hacker and Cyber Forensic Investigator with 10+ years across Cyber Security and Digital Forensics. Leads Smartclues’ evolution into secure, intelligent, globally scalable tech spanning cyber security and U.S. Healthcare RCM.",
     },
     {
       name: "Naveen Naga Sai Pabbathi",
-      role: "Chief Operating Officer",
-      image: communityImages[1],
+      role: "Co-Founder & COO",
+      image: "/Naveen.png",
+      bio:
+        "Mechanical engineer turned operations specialist focused on precision at scale. Streamlines U.S. RCM workflows so Smartclues runs with operational excellence every day.",
     },
     {
-      name: "Ashok Naga Sai Pabbathi",
+      name: "Anvesh Reddy Innaganti",
       role: "Executive Director",
-      image: communityImages[0],
+      image: "/Anvesh.jpeg",
+      bio:
+        "Civil engineer and entrepreneur blending innovation with disciplined execution. Drives strategic growth, operational clarity, and long-term structure for Smartclues.",
     },
     {
-      name: "Deepak Chopra",
-      role: "Vice President Business Development",
-      image: communityImages[2],
+      name: "Balaji Meda",
+      role: "Operations Manager",
+      image: "/Balaji.png",
+      bio:
+        "With an MBA in Finance and a strong operations background, I ensure Smartclues runs with efficiency, discipline, and financial clarity. I focus on strengthening internal workflows, supporting strategic initiatives, and enhancing overall organizational performance.",
     },
-    
-    
-    
   ]
+
+  const [activeMember, setActiveMember] = useState<TeamMember | null>(null)
 
   return (
     <section id="about" className="w-full  max-w-7xl mx-auto" >
@@ -113,8 +131,11 @@ export function AboutSection() {
                   backgroundImage: `linear-gradient(135deg, ${THEME.gradientStart}, ${THEME.gradientEnd})`,
                   color: THEME.textPrimary,
                 }}
+                asChild
               >
-                Join Our Team
+                <Link href="/careers" className="block text-center">
+                  Join Our Team
+                </Link>
               </Button>
             </div>
           </motion.div>
@@ -130,7 +151,7 @@ export function AboutSection() {
               <div
                 className="absolute inset-0"
                 style={{
-                  background: `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%)`,
+                  background: `linear-gradient(180deg, ${toRgba(THEME.overlayDark, 0)} 0%, ${toRgba(THEME.overlayDark, 0.85)} 100%)`,
                 }}
               />
               <div
@@ -191,20 +212,91 @@ export function AboutSection() {
                 whileHover={{ y: -10 }}
                 className="group relative overflow-hidden rounded-3xl"
               >
-                <Image src={member.image} alt={member.name} width={300} height={400} className="h-[300px] w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  width={300}
+                  height={400}
+                  className="h-[300px] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
                 <div
-                  className="absolute bottom-0 left-0 right-0 p-4"
+                  className="absolute inset-x-0 bottom-0 space-y-3 p-4"
                   style={{
-                    background: `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%)`,
+                    background: `linear-gradient(180deg, ${toRgba(THEME.overlayDark, 0)} 0%, ${toRgba(THEME.overlayDark, 0.85)} 100%)`,
                   }}
                 >
-                  <h4 className="font-bold text-white">{member.name}</h4>
-                  <p className="text-sm text-gray-200">{member.role}</p>
+                  <button
+                    type="button"
+                    onClick={() => setActiveMember(member)}
+                    className="flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-white backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100 focus-visible:opacity-100"
+                  >
+                    View Profile
+                    <ArrowUpRight className="h-4 w-4" />
+                  </button>
+                  <div>
+                    <h4 className="font-bold text-white">{member.name}</h4>
+                    <p className="text-sm text-gray-200">{member.role}</p>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </motion.div>
         </div>
+        <AnimatePresence>
+          {activeMember && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center px-4 py-8"
+            >
+              <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-sm" />
+              <motion.div
+                initial={{ scale: 0.94, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.94, opacity: 0 }}
+                transition={{ type: "spring", stiffness: 260, damping: 24 }}
+                className="relative z-10 w-full max-w-3xl overflow-hidden rounded-3xl border shadow-2xl"
+                style={{
+                  borderColor: toRgba(THEME.secondary, 0.2),
+                  backgroundColor: THEME.backgroundLight,
+                }}
+              >
+                <button
+                  type="button"
+                  onClick={() => setActiveMember(null)}
+                  className="absolute right-4 top-4 rounded-full bg-white/80 p-2 text-slate-600 transition hover:bg-white"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+                <div className="flex flex-col gap-6 p-6 md:flex-row">
+                  <div className="relative h-72 w-full flex-shrink-0 overflow-hidden rounded-2xl md:h-[360px] md:w-[320px]">
+                    <Image src={activeMember.image} alt={activeMember.name} fill className="object-cover" />
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        background: `linear-gradient(180deg, ${toRgba(THEME.overlayDark, 0.1)} 0%, ${toRgba(THEME.overlayDark, 0.65)} 100%)`,
+                      }}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-4 md:flex-1 mt-5">
+                    <div>
+                      <h4 className="text-3xl font-bold" style={{ color: THEME.textPrimary }}>
+                        {activeMember.name}
+                      </h4>
+                      <p className="text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: THEME.secondary }}>
+                        {activeMember.role}
+                      </p>
+                    </div>
+                    <p className="text-base leading-relaxed text-xl" style={{ color: THEME.textSecondary }}>
+                      {activeMember.bio}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </section>
   )

@@ -47,7 +47,7 @@ export default function HeroSection({ linesGradient = DEFAULT_GRADIENT }: HeroSe
                     size="lg"
                     className="h-12 rounded-full pl-5 pr-3 text-base bg-black text-white hover:bg-black/90"
                   >
-                    <Link href="">
+                    <Link href="/services">
                       <span className="text-nowrap">Explore Services</span>
                       <ChevronRight className="ml-1" />
                     </Link>
@@ -59,7 +59,7 @@ export default function HeroSection({ linesGradient = DEFAULT_GRADIENT }: HeroSe
                     variant="ghost"
                     className="h-12 rounded-full px-5 text-base text-black bg-black/10 hover:bg-black/20 border border-black/15"
                   >
-                    <Link href="">
+                    <Link href="/about">
                       <span className="text-nowrap">About us</span>
                     </Link>
                   </Button>

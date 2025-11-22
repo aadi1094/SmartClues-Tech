@@ -7,11 +7,12 @@ import { useScroll, motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 const menuItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Careers', href: '#careers' },
-    { name: 'Clients', href: '#clients' },
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Careers', href: '/careers' },
+    { name: 'Clients', href: '/#testimonials' },
+    { name: 'Contact Us', href: '/contact' },
 ]
 
 const colorPresets = {
@@ -59,8 +60,8 @@ export const HeroHeader = ({ onColorPresetChange }: HeroHeaderProps) => {
                 >
                     <motion.div
                         key={1}
-                        className={cn('relative flex flex-wrap items-center justify-between gap-6 py-3 duration-200 lg:gap-0 lg:py-1', scrolled && 'lg:py-4')}>
-                        <div className="flex w-full items-center justify-between gap-12 lg:w-auto">
+                        className={cn('relative flex flex-wrap items-center justify-between gap-6 py-3 duration-200 lg:gap-0 lg:py-1')}>
+                        <div className="flex flex-1 w-full items-center justify-between gap-12 lg:w-auto">
                             <Link href="/" className="flex items-center gap-3 lg:mr-8">
                                 <div className="relative w-16 h-16 lg:w-20 lg:h-20 scale-200">
                                     <Image 
@@ -81,10 +82,12 @@ export const HeroHeader = ({ onColorPresetChange }: HeroHeaderProps) => {
                                 <X className="in-data-[state=active]:rotate-0 in-data-[state=active]:scale-100 in-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 text-black opacity-0 duration-200" />
                             </button>
 
-                            <div className="hidden lg:block">
-                                <ul className="flex gap-8 text-sm text-black/70">
-                                    {menuItems.map((item, index) => (
-                                        <li key={index}>
+                            <div className="hidden lg:flex items-center gap-5 ml-auto justify-end ">
+                                <ul className="flex justify-end gap-8 text-sm text-black/70">
+                                    {menuItems
+                                      .filter((item) => item.name !== 'Contact Us')
+                                      .map((item) => (
+                                        <li key={item.name}>
                                             <Link
                                                 href={item.href}
                                                 className="text-black/70 hover:text-black block duration-150">
@@ -93,14 +96,20 @@ export const HeroHeader = ({ onColorPresetChange }: HeroHeaderProps) => {
                                         </li>
                                     ))}
                                 </ul>
+                                <Link
+                                  href="/contact"
+                                  className="rounded-full bg-gradient-to-r from-[#00DFFF] to-[#0056D1] px-5 py-2 text-sm font-semibold text-white shadow-lg transition hover:opacity-90"
+                                >
+                                  Contact Us
+                                </Link>
                             </div>
                         </div>
 
                         <div className="bg-white/90 backdrop-blur-xl in-data-[state=active]:block lg:in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border border-black/10 p-6 shadow-2xl md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-0">
                             <div className="lg:hidden">
                                 <ul className="space-y-6 text-base text-black/70">
-                                    {menuItems.map((item, index) => (
-                                        <li key={index}>
+                                    {menuItems.map((item) => (
+                                        <li key={item.name}>
                                             <Link
                                                 href={item.href}
                                                 className="text-black/70 hover:text-black block duration-150">
