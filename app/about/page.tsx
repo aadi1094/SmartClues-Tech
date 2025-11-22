@@ -320,6 +320,62 @@ export default function AboutPage() {
         </section>
       </main>
 
+      <AnimatePresence>
+        {activeMember && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center px-4 py-8"
+          >
+            <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-sm" />
+            <motion.div
+              initial={{ scale: 0.94, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.94, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 260, damping: 24 }}
+              className="relative z-10 w-full max-w-3xl overflow-hidden rounded-3xl border bg-white shadow-2xl"
+              style={{ borderColor: toRgba(THEME.secondary, 0.2) }}
+            >
+              <button
+                type="button"
+                onClick={() => setActiveMember(null)}
+                className="absolute right-4 top-4 rounded-full bg-white/80 p-2 text-slate-600 transition hover:bg-white"
+              >
+                <X className="h-4 w-4" />
+              </button>
+              <div className="flex flex-col gap-6 p-6 md:flex-row">
+                <div className="relative h-72 w-full flex-shrink-0 overflow-hidden rounded-2xl md:h-[360px] md:w-[320px]">
+                  <Image src={activeMember.image} alt={activeMember.name} fill className="object-cover" />
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: `linear-gradient(180deg, ${toRgba(THEME.overlayDark, 0.1)} 0%, ${toRgba(
+                        THEME.overlayDark,
+                        0.65
+                      )} 100%)`,
+                    }}
+                  />
+                </div>
+                <div className="mt-4 flex flex-col gap-4 md:mt-0 md:flex-1">
+                  <div>
+                    <h4 className="text-3xl font-bold" style={{ color: THEME.textPrimary }}>
+                      {activeMember.name}
+                    </h4>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: THEME.secondary }}>
+                      {activeMember.role}
+                    </p>
+                  </div>
+                  <p className="text-base leading-relaxed" style={{ color: THEME.textSecondary }}>
+                    {activeMember.bio}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <FooterSection />
     </div>
   )
