@@ -86,6 +86,13 @@ const teamMembers = [
     bio:
       "Having completed my Master’s from Oxford University, I bring a global perspective to business expansion. My goal at Smartclues is to build strong partnerships, enter new markets, and position the company as a trusted leader in technology and RCM services worldwide.",
   },
+  {
+    name: "V V S Kishore",
+    role: "Financial Controller ",
+    image: "/Kishore.png",
+    bio:
+      "Chartered Accountant with 8 years of comprehensive experience in financial management, auditing, and compliance. Joined Smartclues in 2024 to strengthen our financial operations, ensure regulatory compliance, and drive strategic financial planning across our healthcare and technology services divisions.",
+  },
 
 ]
 
