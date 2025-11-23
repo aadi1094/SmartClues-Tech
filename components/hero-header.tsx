@@ -7,7 +7,7 @@ import { useScroll, motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 import ReactCookieBot from 'react-cookiebot'
 
-const domainGroupId=process.env.DOMAINGROUPID ;
+
 
 const menuItems = [
     { name: 'Home', href: '/' },
@@ -32,6 +32,8 @@ type HeroHeaderProps = {
     onColorPresetChange?: (colors: string[]) => void
 }
 
+let cookieBotLoaded = false;
+
 export const HeroHeader = ({ onColorPresetChange }: HeroHeaderProps) => {
     const [menuState, setMenuState] = React.useState(false)
     const [scrolled, setScrolled] = React.useState(false)
@@ -50,13 +52,48 @@ export const HeroHeader = ({ onColorPresetChange }: HeroHeaderProps) => {
         }
     }, [onColorPresetChange])
 
+    const domainGroupId = process.env.NEXT_PUBLIC_DOMAINGROUPID
+
+    const shouldRenderCookieBot = React.useMemo(() => {
+        if (typeof window === 'undefined') return true // SSR
+        
+        // Check if already loaded via global flag
+        if (cookieBotLoaded) return false
+        
+        // Check for existing CookieBot script or object
+        const hasScript = document.querySelector('script[src*="consent.cookiebot.com"]') ||
+                         document.querySelector('script[data-cbid]') ||
+                         window.Cookiebot
+        
+        if (hasScript) {
+            console.warn('CookieBot already exists, skipping render')
+            return false
+        }
+        
+        cookieBotLoaded = true
+        return true
+    }, [])
+
+    // Debug logging
+    React.useEffect(() => {
+        console.log('CookieBot Domain Group ID:', domainGroupId)
+        console.log('Should render CookieBot:', shouldRenderCookieBot)
+    }, [domainGroupId, shouldRenderCookieBot])
+
     return (
         <>
-        <ReactCookieBot
-        domainGroupId={domainGroupId}
-        
-        
-      />
+            {shouldRenderCookieBot && (
+                <ReactCookieBot
+                    domainGroupId={domainGroupId}
+                    onAccept={() => console.log("Cookies accepted")}
+                    onDecline={() => console.log("Cookies declined")}
+                    onLoad={() => console.log("CookieBot loaded successfully")}
+                    onError={(error) => console.error("CookieBot error:", error)}
+                    // Force banner to show globally (for testing)
+                    culture="auto"
+                    level="strict"
+                />
+            )}
             <header>
                 <nav
                     data-state={menuState && 'active'}
