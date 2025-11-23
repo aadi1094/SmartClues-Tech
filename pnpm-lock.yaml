@@ -140,6 +140,9 @@ importers:
       react:
         specifier: 19.2.0
         version: 19.2.0
+      react-cookiebot:
+        specifier: ^1.0.10
+        version: 1.0.10(react@19.2.0)
       react-day-picker:
         specifier: 9.8.0
         version: 9.8.0(react@19.2.0)
@@ -183,6 +186,9 @@ importers:
       '@types/react':
         specifier: ^19
         version: 19.2.6
+      '@types/react-cookiebot':
+        specifier: ^1.0.5
+        version: 1.0.5
       '@types/react-dom':
         specifier: ^19
         version: 19.2.3(@types/react@19.2.6)
@@ -1230,6 +1236,9 @@ packages:
   '@types/node@22.19.1':
     resolution: {integrity: sha512-LCCV0HdSZZZb34qifBsyWlUmok6W7ouER+oQIGBScS8EsZsQbrtFTUrDX4hOl+CS6p7cnNC4td+qrSVGSCTUfQ==}
 
+  '@types/react-cookiebot@1.0.5':
+    resolution: {integrity: sha512-sbRFrpHdIi0XAMV+nOc3y2swMtTf2ismTU8zLmEYCGk0T7jus080ZgKqnqQzblGGWBvJ3luxV5e6KkHq9dl+bA==}
+
   '@types/react-dom@19.2.3':
     resolution: {integrity: sha512-jp2L/eY6fn+KgVVQAOqYItbF0VY/YApe5Mz2F0aykSO8gx31bYCZyvSeYxCHKvzHG5eZjc+zyaS5BrBWya2+kQ==}
     peerDependencies:
@@ -1605,6 +1614,12 @@ packages:
 
   prop-types@15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
+
+  react-cookiebot@1.0.10:
+    resolution: {integrity: sha512-Lac65Jp0irOdWUo569SNFoiYuf5SA8jKhQimNYV8YKywr/VD7ExT7UT1HjTtGt+ecKbfctwLqsl7ULCohz7zBg==}
+    engines: {node: '>=8'}
+    peerDependencies:
+      react: '*'
 
   react-day-picker@9.8.0:
     resolution: {integrity: sha512-E0yhhg7R+pdgbl/2toTb0xBhsEAtmAx1l7qjIWYfcxOy8w4rTSVfbtBoSzVVhPwKP/5E9iL38LivzoE3AQDhCQ==}
@@ -2786,6 +2801,10 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
+  '@types/react-cookiebot@1.0.5':
+    dependencies:
+      '@types/react': 19.2.6
+
   '@types/react-dom@19.2.3(@types/react@19.2.6)':
     dependencies:
       '@types/react': 19.2.6
@@ -3087,6 +3106,12 @@ snapshots:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
+
+  react-cookiebot@1.0.10(react@19.2.0):
+    dependencies:
+      '@babel/runtime': 7.28.4
+      prop-types: 15.8.1
+      react: 19.2.0
 
   react-day-picker@9.8.0(react@19.2.0):
     dependencies:
