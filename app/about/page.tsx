@@ -67,7 +67,7 @@ const teamMembers = [
   },
   {
     name: "Balaji Meda",
-    role: "Operations Manager",
+    role: "Operations Head",
     image: "/Balaji.png",
     bio:
       "With an MBA in Finance and a strong operations background, I ensure Smartclues runs with efficiency, discipline, and financial clarity.",

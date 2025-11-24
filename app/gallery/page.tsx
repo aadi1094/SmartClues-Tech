@@ -21,7 +21,7 @@ const galleryImages = [
   },
   {
     id: 2,
-    src: "/gallery2.png",
+    src: "/gallery6.png",
     alt: "Law Enforcement Training Program - Session 2",
     title: "Senior Officials Training",
   },
