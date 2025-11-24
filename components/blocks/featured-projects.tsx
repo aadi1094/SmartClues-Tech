@@ -58,13 +58,13 @@ const galleryData = [
       "https://images.unsplash.com/photo-1563206767-5b18f218e8de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI3NzN8MHwxfGFsbHx8fHx8fA%3D%3D&ixlib=rb-4.0.3&q=80&w=1080",
   },
   {
-    id: "gst-system",
-    title: "GST System Implementation",
+    id: "hospital-management",
+    title: "Hospital Management Tool",
     description:
-      "End-to-end GST system implementation with automated compliance reporting. This solution simplified tax filing and reduced manual errors significantly.",
-    href: "/case-studies/gst-system",
+      "Comprehensive hospital management system with integrated patient records, appointment scheduling, and real-time analytics. Streamlined operations for improved patient care and administrative efficiency.",
+    href: "/case-studies/hospital-management",
     image:
-      "https://images.unsplash.com/photo-1454165205744-3b78555e5572?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
   },
   {
     id: "ai-operations",

@@ -15,7 +15,9 @@ const menuItems = [
     { name: 'Services', href: '/services' },
     { name: 'Careers', href: '/careers' },
     { name: 'Clients', href: '/#testimonials' },
+    {name:'Gallery', href:'/gallery'},
     { name: 'Contact Us', href: '/contact' },
+
 ]
 
 const colorPresets = {

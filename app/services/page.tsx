@@ -40,7 +40,7 @@ const toRgba = (color: string, alpha: number) => {
 const serviceCategories = [
   { id: "it-services", name: "IT Services", description: "Our comprehensive IT services span from software development to systems integration." },
   { id: "healthcare-solutions", name: "Healthcare Solutions", description: "Specialized technology solutions designed for healthcare providers and facilities." },
-  { id: "security", name: "Security Solutions", description: "Advanced cybersecurity and physical security solutions for modern enterprises." },
+  { id: "security", name: "Cyber Security and Digital Forensics", description: "Advanced cybersecurity, digital forensics, and cyber crime investigation solutions for modern enterprises." },
 ]
 
 const services = [
@@ -50,9 +50,9 @@ const services = [
   { id: 4, category: "healthcare-solutions", title: "Medical Coding", description: "Accurate and efficient medical coding services with 99.9% accuracy.", icon: Database, features: ["ICD-10 Coding", "CPT Coding", "HCPCS Coding", "Medical Billing Support"] },
   { id: 5, category: "healthcare-solutions", title: "Healthcare Analytics", description: "Data-driven insights to improve patient outcomes, operational efficiency, and financial performance.", icon: ChartBar, features: ["Clinical Analytics", "Financial Analytics", "Operational Analytics", "Population Health"] },
   { id: 6, category: "healthcare-solutions", title: "Telehealth Solutions", description: "Enable virtual healthcare delivery with our secure, user-friendly telehealth platforms.", icon: Smartphone, features: ["Virtual Consultations", "Remote Monitoring", "Patient Portals", "Medical IoT"] },
-  { id: 7, category: "security", title: "Cyber Security", description: "Comprehensive security solutions to protect your digital assets from evolving cyber threats.", icon: Shield, features: ["Threat Detection", "Vulnerability Assessment", "Penetration Testing", "Security Training"] },
-  { id: 8, category: "security", title: "Compliance Solutions", description: "Ensure your organization meets industry regulations and compliance requirements.", icon: Clock, features: ["HIPAA Compliance", "GDPR Compliance", "ISO 27001", "PCI DSS"] },
-  { id: 9, category: "security", title: "Global Security Operations", description: "24/7 monitoring and security management services to keep your business protected at all times.", icon: Globe, features: ["Security Monitoring", "Incident Response", "Threat Intelligence", "Security Audits"] },
+  { id: 7, category: "security", title: "Cyber Security (VAPT)", description: "Comprehensive Vulnerability Assessment and Penetration Testing services to identify and mitigate security risks.", icon: Shield, features: ["Vulnerability Assessment", "Penetration Testing", "Security Audits", "Risk Analysis"] },
+  { id: 8, category: "security", title: "Cyber Crime Investigations & Trainings", description: "Expert cyber crime investigation services and comprehensive security training programs.", icon: Clock, features: ["Digital Evidence Collection", "Incident Investigation", "Security Training", "Forensic Analysis"] },
+  { id: 9, category: "security", title: "Digital Forensic Services", description: "Professional digital forensics services for legal proceedings and incident response.", icon: Globe, features: ["Mobile Forensics", "Computer Forensics", "Network Forensics", "Expert Witness Services"] },
 ]
 
 const heroStats = [
@@ -129,9 +129,9 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
           ))}
         </div>
         <div className="mt-6 flex items-center justify-between gap-3">
-          <span className="text-sm font-semibold" style={{ color: THEME.secondary }}>
+          {/* <span className="text-sm font-semibold" style={{ color: THEME.secondary }}>
             Explore capabilities
-          </span>
+          </span> */}
           <Button
             variant="ghost"
             className="rounded-full px-4 text-sm font-semibold"

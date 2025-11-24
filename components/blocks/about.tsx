@@ -68,11 +68,11 @@ export function AboutSection() {
         "Civil engineer and entrepreneur blending innovation with disciplined execution. Drives strategic growth, operational clarity, and long-term structure for Smartclues.",
     },
     {
-    name: "Dr Ravuru Parthasarathi Rao",
-    role: "Vice President – Revenue Management Strategist (Overseas)",
-    image: "/Partha.png",
+    name: "V V S Kishore",
+    role: "Financial Controller ",
+    image: "/Kishore.png",
     bio:
-      "My expertise lies in U.S. Healthcare RCM and global operational strategy. At Smartclues, I focus on optimizing revenue cycles, improving financial outcomes, and leading high-performing teams across international markets.",
+      "Chartered Accountant with 8 years of comprehensive experience in financial management, auditing, and compliance. Joined Smartclues in 2024 to strengthen our financial operations, ensure regulatory compliance, and drive strategic financial planning across our healthcare and technology services divisions.",
   },
   ]
 

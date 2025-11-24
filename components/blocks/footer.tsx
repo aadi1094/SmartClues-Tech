@@ -101,7 +101,7 @@ export function FooterSection() {
           <p className="text-sm" style={{ color: THEME.textSecondary }}>
             Innovative IT services and Revenue Cycle Management solutions
               powered by AI and automation, enhancing business efficiency and
-              security since 2019.
+              security since 2020.
           </p>
           <div className="flex space-x-4">
             {socialLinks.map(({ label, href, icon: Icon }) => (

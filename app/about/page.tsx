@@ -82,7 +82,7 @@ const teamMembers = [
   {
     name: "Deepak Chopra",
     role: "Vice President – Business Development",
-    image: "/Balaji.png",
+    image: "/Deepak.png",
     bio:
       "Having completed my Master’s from Oxford University, I bring a global perspective to business expansion. My goal at Smartclues is to build strong partnerships, enter new markets, and position the company as a trusted leader in technology and RCM services worldwide.",
   },
@@ -104,6 +104,12 @@ const communityImages = [
 
 export default function AboutPage() {
   const [activeMember, setActiveMember] = useState<(typeof teamMembers)[number] | null>(null)
+  
+  // Filter partners to only include those who are also team members
+  const teamMemberPartners = partners.filter(partner => 
+    teamMembers.some(member => member.name === partner.name)
+  )
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: THEME.backgroundLight }}>
       <HeroHeader />
@@ -248,7 +254,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="grid gap-4 md:grid-cols-2">
-              {partners.map((partner) => (
+              {teamMemberPartners.map((partner) => (
                 <div key={partner.name} className="rounded-3xl border px-5 py-4" style={{ borderColor: toRgba(THEME.secondary, 0.1), backgroundColor: "white" }}>
                   <p className="text-lg font-semibold" style={{ color: THEME.textPrimary }}>{partner.name}</p>
                   <p className="text-sm" style={{ color: THEME.textSecondary }}>{partner.role}</p>
