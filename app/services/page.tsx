@@ -101,14 +101,7 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
         className="relative flex h-full flex-col justify-between rounded-[26px] border bg-white/95 p-6 shadow-lg ring-1 ring-black/5 transition duration-300 group-hover:-translate-y-1 group-focus-within:-translate-y-1"
         style={{ borderColor: toRgba(THEME.secondary, 0.18) }}
       >
-        <div className="flex items-start justify-between gap-4">
-          <span className="rounded-2xl p-3" style={{ backgroundColor: toRgba(THEME.primary, 0.16) }}>
-            <Icon className="h-6 w-6" style={{ color: THEME.secondary }} />
-          </span>
-          <span className="text-xs font-semibold uppercase tracking-[0.25em]" style={{ color: THEME.textSecondary }}>
-            {categoryLabel}
-          </span>
-        </div>
+       
         <div className="mt-5 space-y-3">
           <h3 className="text-xl font-semibold" style={{ color: THEME.textPrimary }}>
             {service.title}
