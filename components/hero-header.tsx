@@ -14,7 +14,7 @@ const menuItems = [
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
     { name: 'Careers', href: '/careers' },
-    { name: 'Clients', href: '/#testimonials' },
+    // { name: 'Clients', href: '/#testimonials' },
     {name:'Gallery', href:'/gallery'},
     { name: 'Contact Us', href: '/contact' },
 

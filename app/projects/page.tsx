@@ -16,9 +16,9 @@ const project = {
     "Comprehensive medical coding solution with 99.9% accuracy and 100% production efficiency. This project streamlined the entire coding process for a major healthcare provider.",
   year: "2022",
   stats: [
-    { label: "Accuracy", value: "99.9%" },
-    { label: "Production", value: "100%" },
-    { label: "Turnaround", value: "24h" },
+    { label: "Charts Coded", value: "1.4M+", detail: "Multi-specialty encounters processed annually" },
+    { label: "Audit Accuracy", value: "99.98%", detail: "Dual-pass QA keeps compliance nearly perfect" },
+    { label: "Clean-Claim Success", value: "98.7%", detail: "Payer-ready submissions on the first pass" },
   ],
   tags: ["Medical Coding", "Healthcare", "Automation"],
   highlights: [
@@ -60,6 +60,7 @@ export default function ProjectsPage() {
             <div key={stat.label} className="rounded-2xl border px-4 py-5 text-center" style={{ borderColor: toRgba(THEME.secondary, 0.1), backgroundColor: THEME.backgroundSection }}>
               <p className="text-3xl font-bold" style={{ color: THEME.textPrimary }}>{stat.value}</p>
               <p className="mt-1 text-sm uppercase tracking-[0.2em]" style={{ color: THEME.textSecondary }}>{stat.label}</p>
+              <p className="mt-2 text-xs" style={{ color: THEME.textSecondary }}>{stat.detail}</p>
             </div>
           ))}
         </section>

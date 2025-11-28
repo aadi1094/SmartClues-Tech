@@ -270,7 +270,7 @@ export function FeaturedProjectsSection() {
               }}
               asChild
             >
-              <Link href="/services" className="flex items-center">
+              <Link href="/services?category=rcm-services" className="flex items-center">
                 View All Projects
                 <motion.span
                   initial={{ x: 0 }}

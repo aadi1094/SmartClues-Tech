@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button"
 import { HeroHeader } from "@/components/hero-header"
 import { FooterSection } from "@/components/blocks/footer"
 import Link from "next/link"
+import { useSearchParams } from "next/navigation"
 
 const THEME = {
   primary: "rgb(0, 223, 255)",
@@ -39,7 +40,7 @@ const toRgba = (color: string, alpha: number) => {
 
 const serviceCategories = [
   { id: "it-services", name: "IT Services", description: "Our comprehensive IT services span from software development to systems integration." },
-  { id: "healthcare-solutions", name: "Healthcare Solutions", description: "Specialized technology solutions designed for healthcare providers and facilities." },
+  { id: "rcm-services", name: "End-to-End RCM Services", description: "Our comprehensive RCM solutions streamline financial operations from patient access to final reimbursement—enhancing efficiency, reducing denials, and improving cash flow." },
   { id: "security", name: "Cyber Security and Digital Forensics", description: "Advanced cybersecurity, digital forensics, and cyber crime investigation solutions for modern enterprises." },
 ]
 
@@ -47,12 +48,170 @@ const services = [
   { id: 1, category: "it-services", title: "Custom Software Development", description: "Tailor-made software solutions designed to address your specific business challenges and requirements.", icon: Code, features: ["Web Applications", "Mobile Apps", "Enterprise Software", "API Development"] },
   { id: 2, category: "it-services", title: "Cloud Solutions", description: "Comprehensive cloud services to help you migrate, optimize, and manage your applications in the cloud.", icon: Server, features: ["Cloud Migration", "AWS/Azure Solutions", "Cloud Architecture", "Serverless Applications"] },
   { id: 3, category: "it-services", title: "AI & Machine Learning", description: "Harness the power of artificial intelligence to automate processes.", icon: Brain, features: ["Predictive Analytics", "Natural Language Processing", "Computer Vision", "AI Integration"] },
-  { id: 4, category: "healthcare-solutions", title: "Medical Coding", description: "Accurate and efficient medical coding services with 99.9% accuracy.", icon: Database, features: ["ICD-10 Coding", "CPT Coding", "HCPCS Coding", "Medical Billing Support"] },
-  { id: 5, category: "healthcare-solutions", title: "Healthcare Analytics", description: "Data-driven insights to improve patient outcomes, operational efficiency, and financial performance.", icon: ChartBar, features: ["Clinical Analytics", "Financial Analytics", "Operational Analytics", "Population Health"] },
-  { id: 6, category: "healthcare-solutions", title: "Telehealth Solutions", description: "Enable virtual healthcare delivery with our secure, user-friendly telehealth platforms.", icon: Smartphone, features: ["Virtual Consultations", "Remote Monitoring", "Patient Portals", "Medical IoT"] },
-  { id: 7, category: "security", title: "Cyber Security (VAPT)", description: "Comprehensive Vulnerability Assessment and Penetration Testing services to identify and mitigate security risks.", icon: Shield, features: ["Vulnerability Assessment", "Penetration Testing", "Security Audits", "Risk Analysis"] },
-  { id: 8, category: "security", title: "Cyber Crime Investigations & Trainings", description: "Expert cyber crime investigation services and comprehensive security training programs.", icon: Clock, features: ["Digital Evidence Collection", "Incident Investigation", "Security Training", "Forensic Analysis"] },
-  { id: 9, category: "security", title: "Digital Forensic Services", description: "Professional digital forensics services for legal proceedings and incident response.", icon: Globe, features: ["Mobile Forensics", "Computer Forensics", "Network Forensics", "Expert Witness Services"] },
+  {
+    id: 4,
+    category: "rcm-services",
+    title: "Patient Access & Front-End Services",
+    description:
+      "Front-office specialists streamline scheduling, registration, eligibility checks, prior auths, counseling, and compliance for frictionless intake.",
+    icon: Smartphone,
+    features: [
+      "Scheduling",
+      "Registration",
+      "Eligibility Verification",
+      "Pre-Authorization",
+      "Financial Counseling",
+      "Compliance Checks",
+    ],
+  },
+  {
+    id: 5,
+    category: "rcm-services",
+    title: "Medical Coding Services",
+    description:
+      "Certified coders manage ICD-10, CPT, HCPCS, HCC, specialty reviews, documentation audits, and CMS alignment to safeguard revenue integrity.",
+    icon: Database,
+    features: [
+      "ICD-10",
+      "CPT",
+      "HCPCS",
+      "HCC Coding",
+      "Documentation Review",
+      "Audits",
+      "CMS Guidelines",
+    ],
+  },
+  {
+    id: 6,
+    category: "rcm-services",
+    title: "Charge Capture & Documentation",
+    description:
+      "Charge capture pods reconcile entries, validate documentation, and plug leakage before claims leave your system.",
+    icon: Server,
+    features: [
+      "Charge Entry",
+      "Reconciliation",
+      "Documentation Validation",
+      "Revenue Leakage Prevention",
+    ],
+  },
+  {
+    id: 7,
+    category: "rcm-services",
+    title: "Claims Management",
+    description:
+      "We craft clean claims, monitor every submission, correct rejections, and run payer-specific scrubs for faster adjudication.",
+    icon: Shield,
+    features: [
+      "Clean Claim Creation",
+      "Submission",
+      "Tracking",
+      "Corrections",
+      "Payer Scrubbing",
+    ],
+  },
+  {
+    id: 8,
+    category: "rcm-services",
+    title: "Payment Posting",
+    description:
+      "Revenue ops teams post ERA/EOB data, reconcile balances, flag underpayments, and clarify patient responsibility in real time.",
+    icon: ChartBar,
+    features: [
+      "ERA/EOB Posting",
+      "Reconciliation",
+      "Underpayment Detection",
+      "Patient Responsibility",
+    ],
+  },
+  {
+    id: 9,
+    category: "rcm-services",
+    title: "Denial Management",
+    description:
+      "Denial squads pinpoint root causes, build airtight appeals, engage payers, and harden prevention playbooks.",
+    icon: Brain,
+    features: [
+      "Root Cause Analysis",
+      "Appeals",
+      "Payer Follow-Up",
+      "Denial Prevention",
+    ],
+  },
+  {
+    id: 10,
+    category: "rcm-services",
+    title: "Accounts Receivable (A/R) Follow-Up",
+    description:
+      "A/R analysts chase insurer responses, work aging buckets, escalate blockers, and coordinate patient statements to accelerate cash.",
+    icon: Clock,
+    features: [
+      "Insurance Follow-Up",
+      "Aged A/R Management",
+      "Escalation",
+      "Patient Statements",
+    ],
+  },
+  {
+    id: 11,
+    category: "rcm-services",
+    title: "Compliance & Quality Assurance",
+    description:
+      "Governance leads enforce HIPAA, SOC 2, payer rules, privacy standards, and QA checks across every workflow.",
+    icon: Globe,
+    features: ["HIPAA", "SOC 2", "Payer Guidelines", "Data Privacy", "QA Checks"],
+  },
+  {
+    id: 12,
+    category: "rcm-services",
+    title: "Reporting & Analytics",
+    description:
+      "Ops intelligence delivers dashboards, KPI tracking, denial insights, A/R aging views, and custom executive reporting.",
+    icon: Code,
+    features: ["Dashboards", "KPIs", "Denial Trends", "A/R Aging", "Custom Reports"],
+  },
+  {
+    id: 13,
+    category: "security",
+    title: "Cyber Security (VAPT)",
+    description:
+      "Comprehensive Vulnerability Assessment and Penetration Testing services to identify and mitigate security risks.",
+    icon: Shield,
+    features: [
+      "Vulnerability Assessment",
+      "Penetration Testing",
+      "Security Audits",
+      "Risk Analysis",
+    ],
+  },
+  {
+    id: 14,
+    category: "security",
+    title: "Cyber Crime Investigations & Trainings",
+    description:
+      "Expert cyber crime investigation services and comprehensive security training programs.",
+    icon: Clock,
+    features: [
+      "Digital Evidence Collection",
+      "Incident Investigation",
+      "Security Training",
+      "Forensic Analysis",
+    ],
+  },
+  {
+    id: 15,
+    category: "security",
+    title: "Digital Forensic Services",
+    description:
+      "Professional digital forensics services for legal proceedings and incident response.",
+    icon: Globe,
+    features: [
+      "Mobile Forensics",
+      "Computer Forensics",
+      "Network Forensics",
+      "Expert Witness Services",
+    ],
+  },
 ]
 
 const heroStats = [
@@ -131,10 +290,10 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
             style={{ color: THEME.secondary }}
             asChild
           >
-            <Link href="/contact" className="inline-flex items-center gap-1">
+            {/* <Link href="/contact" className="inline-flex items-center gap-1">
               Let&apos;s talk
               <ArrowRight className="h-4 w-4" />
-            </Link>
+            </Link> */}
           </Button>
         </div>
       </div>
@@ -143,7 +302,9 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
 }
 
 export default function ServicesPage() {
-  const [activeCategory, setActiveCategory] = useState(serviceCategories[0].id)
+  const searchParams = useSearchParams()
+  const initialCategory = searchParams.get("category") ?? serviceCategories[0].id
+  const [activeCategory, setActiveCategory] = useState(initialCategory)
   const filteredServices = useMemo(() => services.filter((svc) => svc.category === activeCategory), [activeCategory])
 
   return (

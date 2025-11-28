@@ -36,8 +36,8 @@ const timeline = [
 ]
 
 const partners = [
-  { name: "Ashok Naga Sai Pabbathi", role: "Founder & CEO" },
-  { name: "Naveen Naga Sai Pabbathi", role: "Co-Founder & COO" },
+  { name: "Ashok Naga Sai Pabbathi", role: "Chief Executive Officer" },
+  { name: "Naveen Naga Sai Pabbathi", role: "Chief Operating Officer" },
   { name: "Mrs. Bharathi Devi Pabbathi", role: "Designated Partner" },
   { name: "Mr. Srinivas Pabbathi", role: "Designated Partner" },
   { name: "HARITHRA ENGINEERING & CONSTRUCTIONS Pvt. Ltd.", role: "Designated Partner (Rep. by Mr. Sai Anvesh Reddy)" },
@@ -46,36 +46,36 @@ const partners = [
 const teamMembers = [
   {
     name: "Ashok Naga Sai Pabbathi",
-    role: "Founder & CEO",
+    role: "Chief Executive Officer",
     image: "/Ashok.png",
     bio:
       "Certified Ethical Hacker and Cyber Forensic Investigator with 10+ years across Cyber Security and Digital Forensics. Leads Smartclues’ evolution into secure, intelligent, globally scalable tech spanning cyber security and U.S. Healthcare RCM.",
   },
   {
     name: "Naveen Naga Sai Pabbathi",
-    role: "Co-Founder & COO",
+    role: "Chief Operating Officer",
     image: "/Naveen.png",
     bio:
       "Mechanical engineer turned operations specialist focused on precision at scale. Streamlines U.S. RCM workflows so Smartclues runs with operational excellence every day.",
   },
   {
-    name: "Anvesh Reddy Innaganti",
+    name: "Anvesh Reddy Inaganti",
     role: "Executive Director",
     image: "/Anvesh.jpeg",
     bio:
       "Civil engineer and entrepreneur blending innovation with disciplined execution. Drives strategic growth, operational clarity, and long-term structure for Smartclues.",
   },
-  {
-    name: "Balaji Meda",
-    role: "Operations Head",
-    image: "/Balaji.png",
-    bio:
-      "With an MBA in Finance and a strong operations background, I ensure Smartclues runs with efficiency, discipline, and financial clarity.",
-  },
+  // {
+  //   name: "Balaji Meda",
+  //   role: "Operations Head",
+  //   image: "/Balaji.png",
+  //   bio:
+  //     "With an MBA in Finance and a strong operations background, I ensure Smartclues runs with efficiency, discipline, and financial clarity.",
+  // },
   {
     name: "Dr Ravuru Parthasarathi Rao",
     role: "Vice President – Revenue Management Strategist (Overseas)",
-    image: "/Partha.png",
+    image: "/Rao.png",
     bio:
       "My expertise lies in U.S. Healthcare RCM and global operational strategy. At Smartclues, I focus on optimizing revenue cycles, improving financial outcomes, and leading high-performing teams across international markets.",
   },
@@ -86,13 +86,13 @@ const teamMembers = [
     bio:
       "Having completed my Master’s from Oxford University, I bring a global perspective to business expansion. My goal at Smartclues is to build strong partnerships, enter new markets, and position the company as a trusted leader in technology and RCM services worldwide.",
   },
-  {
-    name: "V V S Kishore",
-    role: "Financial Controller ",
-    image: "/Kishore.png",
-    bio:
-      "Chartered Accountant with 8 years of comprehensive experience in financial management, auditing, and compliance. Joined Smartclues in 2024 to strengthen our financial operations, ensure regulatory compliance, and drive strategic financial planning across our healthcare and technology services divisions.",
-  },
+  // {
+  //   name: "V V S Kishore",
+  //   role: "Financial Controller ",
+  //   image: "/Kishore.png",
+  //   bio:
+  //     "Chartered Accountant with 8 years of comprehensive experience in financial management, auditing, and compliance. Joined Smartclues in 2024 to strengthen our financial operations, ensure regulatory compliance, and drive strategic financial planning across our healthcare and technology services divisions.",
+  // },
 
 ]
 
@@ -264,7 +264,7 @@ export default function AboutPage() {
             <div className="rounded-3xl border px-6 py-6 md:px-8" style={{ borderColor: toRgba(THEME.secondary, 0.1), backgroundColor: "white" }}>
               <h3 className="text-2xl font-semibold" style={{ color: THEME.textPrimary }}>Executive Director Spotlight</h3>
               <p className="mt-3 text-base" style={{ color: THEME.textSecondary }}>
-                We’re honored to welcome Mr. Sai Anvesh Reddy Innaganti, former Director and Founder of HARITHRA ENGINEERING AND CONSTRUCTIONS Pvt. Ltd., as Executive Director. He brings strong leadership, operational depth, and a strategic growth vision to Smartclues.
+                We’re honored to welcome Mr. Sai Anvesh Reddy Inaganti, as Executive Director. He brings strong leadership, operational depth, and a strategic growth vision to Smartclues.
               </p>
             </div>
           </motion.div>

@@ -2,10 +2,8 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { motion, AnimatePresence } from "framer-motion"
-import { useState } from "react"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowUpRight, X } from "lucide-react"
 
 const THEME = {
   primary: "rgb(0, 223, 255)",
@@ -30,13 +28,6 @@ const fadeIn = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, tra
 const staggerContainer = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }
 const itemFadeIn = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }
 
-type TeamMember = {
-  name: string
-  role: string
-  image: string
-  bio: string
-}
-
 export function AboutSection() {
   const heroImage = "https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?q=80&w=451&h=451&auto=format&fit=crop"
   const communityImages = [
@@ -44,39 +35,6 @@ export function AboutSection() {
     "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
     "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&h=200&auto=format&fit=crop",
   ]
-
-  const team: TeamMember[] = [
-    {
-      name: "Ashok Naga Sai Pabbathi",
-      role: "Founder & CEO",
-      image: "/Ashok.png",
-      bio:
-        "Certified Ethical Hacker and Cyber Forensic Investigator with 10+ years across Cyber Security and Digital Forensics. Leads Smartclues’ evolution into secure, intelligent, globally scalable tech spanning cyber security and U.S. Healthcare RCM.",
-    },
-    {
-      name: "Naveen Naga Sai Pabbathi",
-      role: "Co-Founder & COO",
-      image: "/Naveen.png",
-      bio:
-        "Mechanical engineer turned operations specialist focused on precision at scale. Streamlines U.S. RCM workflows so Smartclues runs with operational excellence every day.",
-    },
-    {
-      name: "Anvesh Reddy Innaganti",
-      role: "Executive Director",
-      image: "/Anvesh.jpeg",
-      bio:
-        "Civil engineer and entrepreneur blending innovation with disciplined execution. Drives strategic growth, operational clarity, and long-term structure for Smartclues.",
-    },
-    {
-    name: "V V S Kishore",
-    role: "Financial Controller ",
-    image: "/Kishore.png",
-    bio:
-      "Chartered Accountant with 8 years of comprehensive experience in financial management, auditing, and compliance. Joined Smartclues in 2024 to strengthen our financial operations, ensure regulatory compliance, and drive strategic financial planning across our healthcare and technology services divisions.",
-  },
-  ]
-
-  const [activeMember, setActiveMember] = useState<TeamMember | null>(null)
 
   return (
     <section id="about" className="w-full  max-w-7xl mx-auto" >
@@ -188,115 +146,6 @@ export function AboutSection() {
             </div>
           </motion.div>
         </div>
-        <div className="mt-16 px-6 pb-10">
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-2xl font-bold tracking-tighter sm:text-3xl"
-            style={{ color: THEME.textPrimary }}
-          >
-            Meet Our Team
-          </motion.h3>
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="mt-8 grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-          >
-            {team.map((member) => (
-              <motion.div
-                key={member.name}
-                variants={itemFadeIn}
-                whileHover={{ y: -10 }}
-                className="group relative overflow-hidden rounded-3xl"
-              >
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  width={300}
-                  height={400}
-                  className="h-[300px] w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div
-                  className="absolute inset-x-0 bottom-0 space-y-3 p-4"
-                  style={{
-                    background: `linear-gradient(180deg, ${toRgba(THEME.overlayDark, 0)} 0%, ${toRgba(THEME.overlayDark, 0.85)} 100%)`,
-                  }}
-                >
-                  <button
-                    type="button"
-                    onClick={() => setActiveMember(member)}
-                    className="flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-white backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100 focus-visible:opacity-100"
-                  >
-                    View Profile
-                    <ArrowUpRight className="h-4 w-4" />
-                  </button>
-                  <div>
-                    <h4 className="font-bold text-white">{member.name}</h4>
-                    <p className="text-sm text-gray-200">{member.role}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-        <AnimatePresence>
-          {activeMember && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center px-4 py-8"
-            >
-              <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-sm" />
-              <motion.div
-                initial={{ scale: 0.94, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.94, opacity: 0 }}
-                transition={{ type: "spring", stiffness: 260, damping: 24 }}
-                className="relative z-10 w-full max-w-3xl overflow-hidden rounded-3xl border shadow-2xl"
-                style={{
-                  borderColor: toRgba(THEME.secondary, 0.2),
-                  backgroundColor: THEME.backgroundLight,
-                }}
-              >
-                <button
-                  type="button"
-                  onClick={() => setActiveMember(null)}
-                  className="absolute right-4 top-4 rounded-full bg-white/80 p-2 text-slate-600 transition hover:bg-white"
-                >
-                  <X className="h-4 w-4" />
-                </button>
-                <div className="flex flex-col gap-6 p-6 md:flex-row">
-                  <div className="relative h-72 w-full flex-shrink-0 overflow-hidden rounded-2xl md:h-[360px] md:w-[320px]">
-                    <Image src={activeMember.image} alt={activeMember.name} fill className="object-cover" />
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        background: `linear-gradient(180deg, ${toRgba(THEME.overlayDark, 0.1)} 0%, ${toRgba(THEME.overlayDark, 0.65)} 100%)`,
-                      }}
-                    />
-                  </div>
-                  <div className="flex flex-col gap-4 md:flex-1 mt-5">
-                    <div>
-                      <h4 className="text-3xl font-bold" style={{ color: THEME.textPrimary }}>
-                        {activeMember.name}
-                      </h4>
-                      <p className="text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: THEME.secondary }}>
-                        {activeMember.role}
-                      </p>
-                    </div>
-                    <p className="text-base leading-relaxed text-xl" style={{ color: THEME.textSecondary }}>
-                      {activeMember.bio}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </motion.div>
     </section>
   )

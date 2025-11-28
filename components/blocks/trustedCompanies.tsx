@@ -103,12 +103,12 @@ export function TrustedBySection() {
             {marqueeLogos.map((logo, index) => (
               <div
                 key={`${logo.alt}-${index}`}
-                className="group/logo flex h-24 min-w-[160px] flex-shrink-0 items-center justify-center rounded-2xl border border-white/70 bg-white/90 px-6 shadow-[0_15px_35px_rgba(15,23,42,0.08)] transition duration-300 hover:shadow-[0_20px_45px_rgba(15,23,42,0.12)]"
+                className="group/logo flex h-28 min-w-[190px] flex-shrink-0 items-center justify-center rounded-2xl border border-white/70 bg-white/90 px-8 shadow-[0_15px_35px_rgba(15,23,42,0.08)] transition duration-300 hover:shadow-[0_20px_45px_rgba(15,23,42,0.12)]"
               >
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="h-10 w-full max-w-[140px] object-contain transition duration-300 ease-out group-hover/logo:scale-105"
+                  className="h-14 w-full max-w-[160px] object-contain transition duration-300 ease-out group-hover/logo:scale-105"
                 />
               </div>
             ))}
