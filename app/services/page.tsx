@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { Suspense, useMemo, useState } from "react"
 import { motion } from "framer-motion"
 import {
   ArrowRight,
@@ -301,7 +301,7 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
   )
 }
 
-export default function ServicesPage() {
+function ServicesContent() {
   const searchParams = useSearchParams()
   const initialCategory = searchParams.get("category") ?? serviceCategories[0].id
   const [activeCategory, setActiveCategory] = useState(initialCategory)
@@ -424,5 +424,17 @@ export default function ServicesPage() {
       </main>
       <FooterSection />
     </div>
+  )
+}
+
+export default function ServicesPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen" style={{ backgroundColor: THEME.backgroundLight }} />
+      }
+    >
+      <ServicesContent />
+    </Suspense>
   )
 }
