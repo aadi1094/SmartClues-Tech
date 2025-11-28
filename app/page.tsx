@@ -9,6 +9,8 @@ import { AboutSection } from "@/components/blocks/about";
 import { TestimonialsSection } from "@/components/blocks/testimonials";
 import { ContactsSection } from "@/components/blocks/contacts";
 import { FooterSection } from "@/components/blocks/footer";
+import { CertificatesGrid } from "@/components/blocks/certficates";
+import { TrustedBySection } from "@/components/blocks/trustedCompanies";
 
 export default function Home() {
   const [colorPreset, setColorPreset] = useState<string[]>(["#7C444F", "#9F5255", "#E16A54", "#F39E60"]);
@@ -20,14 +22,17 @@ export default function Home() {
       {/* Hero Content */}
       <div className="relative z-10">
         <HeroSection linesGradient={colorPreset} />
-        <div className="mt-24 flex flex-col gap-32 lg:gap-24">
+        <div className="mt-24 flex flex-col gap-24 lg:gap-20">
           <AboutSection />
           <FeaturesSectionWithHoverEffects />
           
           <FeaturedProjectsSection />
+          <TrustedBySection />
           <TestimonialsSection />
+          <CertificatesGrid />
           <ContactsSection />
           <FooterSection />
+
         </div>
       </div>
     </div>

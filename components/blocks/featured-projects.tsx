@@ -191,8 +191,11 @@ export function FeaturedProjectsSection() {
                     color: THEME.textPrimary,
                     backgroundImage: `linear-gradient(135deg, ${THEME.gradientStart}, ${THEME.gradientEnd})`,
                   }}
+                  asChild
                 >
-                  View Project <ArrowUpRight className="ml-2 h-4 w-4" />
+                  <Link href="/projects">
+                    View Project <ArrowUpRight className="ml-2 h-4 w-4" />
+                  </Link>
                 </Button>
               </motion.div>
             </div>
