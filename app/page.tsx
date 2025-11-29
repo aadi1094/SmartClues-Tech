@@ -16,13 +16,13 @@ export default function Home() {
   const [colorPreset, setColorPreset] = useState<string[]>(["#7C444F", "#9F5255", "#E16A54", "#F39E60"]);
 
   return (
-    <div className="relative min-h-dvh w-full">
+    <div className="relative min-h-dvh w-full overflow-x-hidden">
       <HeroHeader onColorPresetChange={setColorPreset} />
 
-      {/* Hero Content */}
-      <div className="relative z-10">
+      <div className="relative z-10  sm:px-6 lg:px-8">
         <HeroSection linesGradient={colorPreset} />
-        <div className="mt-24 flex flex-col gap-24 lg:gap-20">
+
+        <div className="mx-auto px-4 mt-24 flex w-full max-w-7xl flex-col gap-24 lg:gap-20">
           <AboutSection />
           <FeaturesSectionWithHoverEffects />
           
