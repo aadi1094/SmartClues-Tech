@@ -39,7 +39,7 @@ export default function ProjectsPage() {
       <HeroHeader />
       <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 pb-20 pt-28 sm:px-6 lg:px-8">
         <section className="rounded-[32px] border px-6 py-10 shadow-xl sm:px-10" style={{ backgroundColor: THEME.backgroundSection, borderColor: toRgba(THEME.secondary, 0.15) }}>
-          <p className="text-sm font-semibold uppercase tracking-[0.3em]" style={{ color: THEME.secondary }}>Case Study · {project.year}</p>
+          {/* <p className="text-sm font-semibold uppercase tracking-[0.3em]" style={{ color: THEME.secondary }}>Case Study · {project.year}</p> */}
           <h1 className="mt-4 text-4xl font-bold sm:text-5xl" style={{ color: THEME.textPrimary }}>
             {project.title}
           </h1>
