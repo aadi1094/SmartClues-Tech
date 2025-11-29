@@ -46,14 +46,14 @@ const partners = [
 const teamMembers = [
   {
     name: "Ashok Naga Sai Pabbathi",
-    role: "Chief Executive Officer",
+    role: "Founder & CEO",
     image: "/Ashok.png",
     bio:
       "Certified Ethical Hacker and Cyber Forensic Investigator with 10+ years across Cyber Security and Digital Forensics. Leads Smartclues’ evolution into secure, intelligent, globally scalable tech spanning cyber security and U.S. Healthcare RCM.",
   },
   {
     name: "Naveen Naga Sai Pabbathi",
-    role: "Chief Operating Officer",
+    role: "Co-Founder & COO",
     image: "/Naveen.png",
     bio:
       "Mechanical engineer turned operations specialist focused on precision at scale. Streamlines U.S. RCM workflows so Smartclues runs with operational excellence every day.",
@@ -65,13 +65,13 @@ const teamMembers = [
     bio:
       "Civil engineer and entrepreneur blending innovation with disciplined execution. Drives strategic growth, operational clarity, and long-term structure for Smartclues.",
   },
-  // {
-  //   name: "Balaji Meda",
-  //   role: "Operations Head",
-  //   image: "/Balaji.png",
-  //   bio:
-  //     "With an MBA in Finance and a strong operations background, I ensure Smartclues runs with efficiency, discipline, and financial clarity.",
-  // },
+  {
+    name: "Balaji Meda",
+    role: "Operations Head",
+    image: "/Balaji.png",
+    bio:
+      "With an MBA in Finance and a strong operations background, I ensure Smartclues runs with efficiency, discipline, and financial clarity.",
+  },
   {
     name: "Dr Ravuru Parthasarathi Rao",
     role: "Vice President – Revenue Management Strategist (Overseas)",
