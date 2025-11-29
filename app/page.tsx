@@ -19,10 +19,10 @@ export default function Home() {
     <div className="relative min-h-dvh w-full overflow-x-hidden">
       <HeroHeader onColorPresetChange={setColorPreset} />
 
-      <div className="relative z-10  sm:px-6 lg:px-8">
+      <div className="relative z-10  ">
         <HeroSection linesGradient={colorPreset} />
 
-        <div className="mx-auto px-4 mt-24 flex w-full max-w-7xl flex-col gap-24 lg:gap-20">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8 mt-24 flex w-full max-w-7xl flex-col gap-24 lg:gap-20">
           <AboutSection />
           <FeaturesSectionWithHoverEffects />
           
